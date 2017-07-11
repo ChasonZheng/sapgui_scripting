@@ -23,7 +23,7 @@ class Transaction:
                     runnable.run(self.ses, self.tcode, row)
                 except:
                     print(self.ses.FindById("wnd[0]/sbar").text)
-                    log.write(self.ses.FindById("wnd[0]/sbar").text+"\n")                    
-                    log.close()
-        
+                    log.write(self.ses.FindById("wnd[0]/sbar").text+"\n")
+        log.close()
+             
     
