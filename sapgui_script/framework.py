@@ -15,7 +15,7 @@ class Transaction:
         self.ses = self.sapGui.FindById("ses[0]")
         
     def runScript(self, runnable):
-        log = open("log_"+str(datetime.now()).replace(" ","_").replace(":","_")+".txt", "w")
+        log = open("log_"+self.tcode+"_"+str(datetime.now()).replace(" ","_").replace(":","_")+".txt", "w")
         with open(self.path) as csvfile:                    
             reader = csv.DictReader(csvfile, delimiter = ';')
             for row in reader:
