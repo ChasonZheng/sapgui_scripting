@@ -38,7 +38,7 @@ def main():
             ses.FindById("wnd[0]/tbar[0]/btn[11]").press()        
             
 
-    tr = Transaction('PA40', 'C:\\yuar\\testData.csv')        
+    tr = Transaction('PA40', 'C:\\testData.csv')        
         
     tr.runScript(ExecuteScript())
 
