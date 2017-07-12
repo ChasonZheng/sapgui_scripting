@@ -4,7 +4,7 @@ from sapgui_script.framework import Transaction
 
 def main():    
     class ExecuteScript(Runnable):
-        def run(self, ses, tcode, row):
+        def run(self, ses, tcode, row, utils):
             ses.FindById("wnd[0]").resizeWorkingPane(231,39,False)
             ses.StartTransaction(tcode)                        
             ses.FindById("wnd[0]").sendVKey(0)        
@@ -28,18 +28,21 @@ def main():
             ses.FindById("wnd[0]/usr/ctxtP0000-MASSG").text = row["MASSG"]
             ses.FindById("wnd[0]/usr/ctxtP0000-MASSG").setFocus()
             ses.FindById("wnd[0]/usr/ctxtP0000-MASSG").caretPosition = 2
+            utils.log.add(ses)
             ses.FindById("wnd[0]/tbar[0]/btn[11]").press()
             ses.FindById("wnd[0]/usr/txtP2001-STDAZ").text = row["HOURS"]
             ses.FindById("wnd[0]/usr/txtP2001-STDAZ").setFocus()
             ses.FindById("wnd[0]/usr/txtP2001-STDAZ").caretPosition = 7
+            utils.log.add(ses)
             ses.FindById("wnd[0]/tbar[0]/btn[11]").press()
-            ses.FindById("wnd[0]/tbar[0]/btn[11]").press()            
+            ses.FindById("wnd[0]/tbar[0]/btn[11]").press()
+            utils.log.add(ses)
             ses.FindById("wnd[0]/tbar[1]/btn[21]").press()
+            utils.log.add(ses)
             ses.FindById("wnd[0]/tbar[0]/btn[11]").press()        
             
 
-    tr = Transaction('PA40', 'C:\\testData.csv')        
-        
+    tr = Transaction('PA40', 'C:\\yuar\\testData.csv')                
     tr.runScript(ExecuteScript())
 
 
